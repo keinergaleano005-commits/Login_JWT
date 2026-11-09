@@ -1,7 +1,1 @@
-*
-!.gitignore
-!db.py
-!main.py
-!BaseModel.py
-!security.py
 .env

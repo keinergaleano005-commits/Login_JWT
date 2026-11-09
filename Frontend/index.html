@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <form id="form-login">
+      <h1>Iniciar sesión</h1>
+      <input type="email" id="email" placeholder="Correo" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+      <p id="mensaje"></p>
+    </form>
+
+    <section id="panel" hidden>
+      <h1 id="saludo"></h1>
+      <button id="btn-salir">Cerrar sesión</button>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

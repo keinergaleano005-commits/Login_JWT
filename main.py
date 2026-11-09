@@ -7,6 +7,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from db import DataBase, db
 from security import  hashear_contrasena, verificar_contrasena,generar_token, obtener_usuario_actual
+from fastapi.middleware.cors import CORSMiddleware
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -16,6 +18,16 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5500", "http://127.0.0.1:5500"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/me")
+async def me(usuario_actual: dict = Depends(obtener_usuario_actual)):
+    return {"id": usuario_actual["id"]}
 
 @app.post("/usuarios", status_code=201)
 async def crear_usuario(usuario: UsuarioCreate):
